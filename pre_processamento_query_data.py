@@ -78,6 +78,13 @@ from sklearn.preprocessing import Imputer
 imputer = Imputer(missing_values="NaN",strategy="mean",axis=0)
 #fit , seta a base de dados, os [] são para dizer qual parte da base
 #vai ser trabalhada
-imputer = imputer.fit(previsores[:,0:3])
+imputer = imputer.fit(previsores[:,:])
 #devolve para a variavel os dados corrigidos 
-previsores[:,0:3] = imputer.transform(previsores[:,0:3])
+previsores[:,:] = imputer.transform(previsores[:,:])
+
+#escalonamento dos valores por padronização
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+#fazendo o escalonamento
+previsores = scaler.fit_transform(previsores)
+
