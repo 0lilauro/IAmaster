@@ -8,7 +8,7 @@ Created on Fri Feb 15 17:05:35 2019
 
 import pandas as pd
 import numpy as np
-from  sklearn.preprocessing import LabelEncoder,OneHotEncoder
+from sklearn.preprocessing import LabelEncoder,OneHotEncoder, StandardScaler
 
 base = pd.read_csv('./census.csv')
 
@@ -48,3 +48,7 @@ previsores = onehotencoder.fit_transform(previsores).toarray()
 #Convertendo a classe
 labelencoder_classe = LabelEncoder()
 classes = labelencoder_classe.fit_transform(classes)
+
+#Escalonizando todos os valores.
+scaler = StandardScaler()
+previsores = scaler.fit_transform(previsores)
