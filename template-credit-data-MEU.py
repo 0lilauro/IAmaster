@@ -1,6 +1,6 @@
 import pandas as pd
 
-base = pd.read_csv('credit-dataBKP.csv')
+base = pd.read_csv('credit-data.csv')
 base.loc[base.age < 0, 'age'] = base.age[base.age > 0 ].mean();
 
 previsores = base.iloc[:, 1:4].values
